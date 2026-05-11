@@ -1,0 +1,79 @@
+﻿@model TPLOCAL1.Models.Form
+
+@{
+    ViewData["Title"] = "ValidForm";
+    ViewBag.HeaderTitle = "Validation du formulaire";
+    ViewBag.Link1Title = "Accueil";
+    ViewBag.Link1 = "";
+    ViewBag.Link2Title = "Liste des avis";
+    ViewBag.Link2 = "OpinionList";
+}
+
+<!--La structure de la page est définie dans le layout.-->
+
+    <!--Message d'envoi du formulaire-->
+    <p>Votre formulaire a bien été pris en compte!</p>
+
+    <!--Table des informations personnelles rempli-->
+    <table>
+        <!--Titre tableau-->
+        <caption>Informations personnelles</caption>
+
+        <!--Lignes avec cellule titre/cellule input remplie-->
+        <tr>
+            <th>Nom</th>
+            <td>@Model.Nom</td>
+        </tr>
+        <tr>
+            <th>Prénom</th>
+            <td>@Model.Prenom</td>
+        </tr>
+        <tr>
+            <th>Sexe</th>
+            <td>@Model.Sexe</td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>@Model.Adresse</td>
+        </tr>
+        <tr>
+            <th>Code Postal</th>
+            <td>@Model.CodePos</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>@Model.Ville</td>
+        </tr>
+        <tr>
+            <th>Adresse mail</th>
+            <td>@Model.Email</td>
+
+        </tr>
+    </table>
+
+    <!--Table suivi formation rempli-->
+    <table>
+        <caption>Informations formation suivie</caption>
+
+        <tr>
+            <th>Début suivi formation</th>
+            <td>@Model.DateDeb</td>
+        </tr>
+        <tr>
+            <th>Formation suivie</th>
+            <td>@Model.Formation</td>
+        </tr>
+    </table>
+
+    <!--Table avis rempli-->
+    <table>
+        <caption>Avis formation</caption>
+        <tr>
+            <th>Formation COBOL</th>
+            <td>@Model.AvisCOBOL</td>
+        </tr>
+        <tr>
+            <th>Formation C#</th>
+            <td>@Model.AvisCsharp</td>
+        </tr>
+    </table>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "OpinionList";
+    ViewBag.HeaderTitle = "Liste des avis";
+    ViewBag.Link1Title = "Accueil";
+    ViewBag.Link1 = "";
+    ViewBag.Link2Title = "Remplir le formulaire";
+    ViewBag.Link2 = "Form";
+}
+
+<!--La structure de la page est définie dans le layout.-->
+        <table>
+            <caption>Liste des avis</caption>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Avis donné</th>
+            </tr>
+            @foreach (TPLOCAL1.Models.Opinion opinion in Model)
+            {
+                <tr>
+                    <td>@opinion.FirstName</td>
+                    <td>@opinion.LastName</td>
+                    <!--Selon la valeur de OpinionGiven, on affiche un fond vert ou rouge-->
+                    @if (@opinion.OpinionGiven == "O")
+                    {
+                        <td style="background-color:green">Oui</td>
+                    }else
+                    {
+                        <td style="background-color:red">Non</td>
+                    }
+                </tr>
+            }
+        </table>

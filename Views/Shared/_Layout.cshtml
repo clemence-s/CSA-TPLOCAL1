@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] - HN-TP LOCAL</title>
+    <script type="importmap"></script>
+    <!--Les feuilles de style Index et Form étant identique pour l'affichage
+        générale de la page, on choisit d'utiliser la feuille de style forme
+        pour toutes les pages-->
+    <link rel="stylesheet" href="~/resources/Form.css" asp-append-version="true" />
+</head>
+
+<body>
+    <!--Titre-->
+    <header>
+        <img src="~/resources/GroupeHN.png" class="image" alt="GroupHN" />
+        <h1>@ViewBag.HeaderTitle</h1>
+    </header>
+
+    <!--Menu-->
+    <nav>
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index" asp-route-id=@ViewBag.Link1>@ViewBag.Link1Title</a></li>
+            <li><a asp-controller="Home" asp-action="Index" asp-route-id=@ViewBag.Link2>@ViewBag.Link2Title</a></li>
+        </ul>
+    </nav>
+
+    <!--Corps-->
+    <section>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </section>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

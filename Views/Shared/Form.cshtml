@@ -1,0 +1,133 @@
+﻿@model TPLOCAL1.Models.Form
+
+@{
+    ViewData["Title"] = "Form";
+    ViewBag.HeaderTitle = "Formulaire TP HN avis";
+    ViewBag.Link1Title = "Accueil";
+    ViewBag.Link1 = "";
+    ViewBag.Link2Title = "Liste des avis";
+    ViewBag.Link2 = "OpinionList";
+}
+<!--La structure de la page est définie dans le layout-->
+
+    <form asp-action="ValidationFormulaire">
+    <!--Table des informations personnelles à remplir-->
+    <table>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <!--Titre tableau-->
+        <caption>Informations personnelles</caption>
+
+        <!--Lignes avec cellule titre/cellule input-->
+        <tr>
+            <th>Nom</th>
+            <td>
+                <input type="text" asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Prénom</th>
+            <td>
+                <input type="text" asp-for="Prenom" class="form-control" />
+                <span asp-validation-for="Prenom" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Sexe</th>
+            <!--Liste déroulante-->
+            <td>
+                <select name="Sexe" asp-for="Sexe" class="form-control">
+                    <option value="">Sélectionner votre sexe</option>
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+                    <option value="Autre">Autre</option>
+                </select>
+                <span asp-validation-for="Sexe" class="text-danger"></span>
+        </td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>
+                <input type="text" asp-for="Adresse" class="form-control"/>
+                <span asp-validation-for="Adresse" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Code Postal</th>
+            <td>
+                <input type="text" asp-for="CodePos" class="form-control" />
+                <span asp-validation-for="CodePos" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>
+                <input type="text" asp-for="Ville" class="form-control"/>
+                <span asp-validation-for="Ville" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Adresse mail</th>
+            <td>
+                <input type="email" asp-for="Email" class="form-control"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </td>
+
+        </tr>
+    </table>
+
+    <!--Table suivi formation-->
+    <table>
+        <caption>Informations formation suivie</caption>
+
+        <tr>
+            <th>Début suivi formation</th>
+            <td>
+                <input type="date" max="2021-01-01" asp-for="DateDeb" class="form-control" />
+                <span asp-validation-for="DateDeb" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Formation suivie</th>
+            <td>
+                <select asp-for="Formation" class="form-control">
+                <option value="">Sélectionner une formation</option>
+                <option value="COBOL">Formation COBOL</option>
+                <option value="Objets">Formation C#</option>
+                <option value="Dual">Formation double compétences</option>
+                </select>
+                <span asp-validation-for="Formation" class="text-danger"></span>
+            </td>
+        </tr>
+    </table>
+
+    <!--Table avis-->
+    <table>
+        <caption>Avis formation</caption>
+        <tr>
+            <th>Formation COBOL</th>
+            <td>
+                <input type="text" asp-for="AvisCOBOL" class="form-control"/>
+                <span asp-validation-for="AvisCOBOL" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <th>Formation C#</th>
+            <td>
+                <input type="text" asp-for="AvisCsharp" class="form-control"/>
+                <span asp-validation-for="AvisCsharp" class="text-danger"></span>
+            </td>
+        </tr>
+    </table>
+
+    <!--Bouton de validation-->
+    <input type="submit" value="Envoi" class="btn btn-primary" />
+    
+    </form>
+
+                
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
